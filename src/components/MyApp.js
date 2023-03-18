@@ -1,22 +1,21 @@
-
-import './App.css';
-import NavBar from './components/Navbar';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "./components/Home";
-import About from "./components/About";
-import Contact from "./components/Contact";
-import Weather from './components/Weather';
-import Users from './components/Users';
-import AddUser from './components/AddUser';
-import EditUser from './components/EditUser';
+import Home from "./Home";
+import About from "./About";
+import Contact from "./Contact";
+import NavBar from './Navbar';
+import Weather from './Weather';
+import Users from './Users';
+import AddUser from './AddUser';
+import EditUser from './EditUser';
 
-function App() {
-  return (
-    <>
-    <BrowserRouter>
-      <NavBar />
-      <Routes>
+function MyApp() {
+    return (
+        <>
+        <NavBar />
+          <Routes>
             <Route  path="/" element={<Home />} exact />
             <Route  path="/home" element={<Home />} />
             <Route  path="/about" element={<About />} />
@@ -27,10 +26,16 @@ function App() {
             <Route  path="/edit" element={<EditUser />} />
             <Route path="*" element={<h1>Oops! Page not found..</h1>} />
           </Routes>
-    </BrowserRouter>
-      
-    </>
-  );
+        </>
+      );
 }
 
-export default App;
+export default MyApp;
+
+if (document.getElementById('root')) {
+    ReactDOM.render(
+        <BrowserRouter>
+            <MyApp />
+        </BrowserRouter>
+            , document.getElementById('root'));
+}
